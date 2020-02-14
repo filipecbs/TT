@@ -17,7 +17,7 @@ class Historico extends Model
         $this->name = $request->name;
         $this->genero = $request->genero;
         $this->autor = $request->autor;
-        $this->user_id = $request->user_id;
+        $this->user_id = $request->comprador_id;
         //$historico->data = $request->data;
         //$historico->save();
     

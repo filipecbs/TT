@@ -33,10 +33,18 @@ class LivroController extends Controller
         return response()->json($livro);
     }
 
-    public function listLivro(){
-        $livro = Livro::all();
+    public function listLivroTrue(){
+        $livro = Livro::all()->where('status',true);
+        return $livro;
         return response()->json($livro);
     }
+    
+    public function listLivroFalse(){
+        $livro = Livro::all()->where('status',false);
+        return $livro;
+        return response()->json($livro);
+    }
+
 
     public function showLivro($id){
         $livro = Livro::findOrFail($id);
