@@ -1,0 +1,12 @@
+.divSlide {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 40%;
+    border: 1px solid black;
+}
+
+.slide {
+    height: 40%;
+}

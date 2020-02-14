@@ -21,15 +21,16 @@ export class Tab3Page {
             (res) => {
                 console.log('Logout realizado');
                 localStorage.removeItem('userToken');
+                localStorage.removeItem('userId');
                 this.router.navigate(['/tabs/tab1']);
             }
         );
     }
     historico() {
-        this.router.navigate(['/historico']);
+        this.router.navigate(['tabs/historico']);
     }
     listaPerfil() {
-        this.router.navigate(['/list-perfil']);
+        this.router.navigate(['/tabs/list-perfil']);
     };
     clicaPerfil(id) {
         this.router.navigate(['/', id])

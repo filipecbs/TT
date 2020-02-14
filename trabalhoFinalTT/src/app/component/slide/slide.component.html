@@ -1,7 +1,9 @@
-<ion-slides fullscreen class="ion-padding" scroll-y="false">
+<ion-slides fullscreen class="ion-padding slide" scroll-y="false">
 
-    <ion-slide *ngFor="let slide of slideInfo" class="slide" (click)="clicaSlide(slide.id)">
-        <img src="{{ slide.foto }}" />
-        <p>{{ slide.titulo }}</p>
+    <ion-slide *ngFor="let slide of slideInfo" (click)="clicaSlide(slide.id)">
+        <div class="divSlide">
+            <img src="{{ slide.photo }}" />
+            <p>{{ slide.name }}</p>
+        </div>
     </ion-slide>
 </ion-slides>

@@ -18,7 +18,7 @@ export class SlideComponent implements OnInit {
   }
 
   clicaSlide(id) {
-      this.router.navigate(['/livro', id])
+      this.router.navigate(['/livro', id]);
   };
 
 }

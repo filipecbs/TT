@@ -81,6 +81,36 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'historico',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./historico/historico.module').then(m => m.HistoricoPageModule)
+          }
+        ]
+      },
+      {
+        path: 'list-perfil',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./list-perfil/list-perfil.module').then(m => m.ListPerfilPageModule)
+          }
+        ]
+      },
+      {
+        path: 'perfil/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./perfil/perfil.module').then(m => m.PerfilPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab2',
         pathMatch: 'full'
@@ -91,14 +121,6 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/tab2',
     pathMatch: 'full'
-  },
-  {
-    path: 'historico',
-    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
-  },
-  {
-    path: 'list-perfil',
-    loadChildren: () => import('./list-perfil/list-perfil.module').then( m => m.ListPerfilPageModule)
   },
 
 ]

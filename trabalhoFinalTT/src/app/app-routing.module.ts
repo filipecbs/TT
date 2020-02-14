@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./tab3/tab3.module').then( m => m.Tab3PageModule), canActivate: [PrecisaEstarLogadoGuard]
   },
   {
-    path: 'livro',
+    path: 'livro/:id',
     loadChildren: () => import('./tabs/livro/livro.module').then( m => m.LivroPageModule)
   },
 ];

@@ -6,7 +6,7 @@
         <ion-spinner class="loading" name="crescent" color="primary" *ngIf="loading"></ion-spinner>
     </ion-row>
     <div *ngIf="!loading">
-        <app-slide *ngFor="let slide of slides" [slideInfo]="slide" (slideClicked)="goToLivro($event)" (click)="loading = true"></app-slide>
+        <app-slide *ngFor="let slide of slides" [slideInfo]="slide" (slideClicked)="goToLivro($event)"></app-slide>
     </div>
     <div class="espaco">Avaliações:</div>
     <app-avaliacao [avaliacoes]="avaliacoes"></app-avaliacao>

@@ -15,6 +15,7 @@ export class AuthService {
       'Accept': 'application/json'
     }
   }
+  
   registrarUser( form ): Observable<any> {
     return this.HttpClient.post( this.apiUrl + 'register', form, this.httpHeaders);
   }
@@ -26,13 +27,19 @@ export class AuthService {
     return this.HttpClient.get( this.apiUrl + 'listaUser', this.httpHeaders);
   }
 
+  mostraUser(id) {
+      return this.HttpClient.get( this.apiUrl + 'mostraUser/' + id, this.httpHeaders);
+  }
+
   logout(): Observable<any> {
     console.log(this.httpHeaders);
     this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
     return this.HttpClient.get( this.apiUrl + 'logout', this.httpHeaders );
   }
+
   registrarComentario( form ): Observable<any> {
     return this.HttpClient.post( this.apiUrl + 'criaComentario', form, this.httpHeaders);
   }
+
   constructor(public HttpClient: HttpClient) { }
 }

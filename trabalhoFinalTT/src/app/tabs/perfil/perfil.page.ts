@@ -1,19 +1,17 @@
-import { Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { LivroService } from '../services/livro.service';
-//import { AvaliacaoService } from '..services/avaliacao.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { LivroService } from '../../services/livro.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component({
-    selector: 'app-tab1',
-    templateUrl: 'tab1.page.html',
-    styleUrls: ['tab1.page.scss']
+    selector: 'app-perfil',
+    templateUrl: './perfil.page.html',
+    styleUrls: ['./perfil.page.scss'],
 })
-export class Tab1Page {
+export class PerfilPage implements OnInit {
 
-    myUserId;
-    myUser;
+    userId;
+    user;
 
     slides;
     avaliacoes;
@@ -22,12 +20,12 @@ export class Tab1Page {
 
     constructor(public authService: AuthService, public livroService: LivroService, public router: Router, public route: ActivatedRoute) { }
 
-    getMyUser(id) {
+    getUser(id) {
         this.authService.mostraUser(id).subscribe(
             (res) => {
                 console.log(res);
-                this.myUser = res[0];
-                this.getLivros(this.myUser.id);
+                this.user = res[0];
+                this.getLivros(this.user.id);
             },
             (error) => {
                 console.log(error);
@@ -51,9 +49,11 @@ export class Tab1Page {
         this.router.navigate(['/livro', id]);
     }
 
-    ionViewWillEnter() {
-        this.myUserId = localStorage.getItem('userId');
-        this.getMyUser(this.myUserId);
+    ngOnInit() {
     }
 
+    ionViewWillEnter() {
+        this.userId = this.route.snapshot.paramMap.get('id');
+        this.getUser(this.userId);
+    }
 }
