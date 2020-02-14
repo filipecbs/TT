@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LivroService } from '../../services/livro.service';
 
 @Component({
@@ -11,10 +11,12 @@ export class LivroPage implements OnInit {
 
     livroId;
     livro;
+    userId;
+    sameUser;
 
     loading = true;
 
-    constructor(public route: ActivatedRoute, public LivroService: LivroService) {
+    constructor(public router: Router, public route: ActivatedRoute, public LivroService: LivroService) {
         this.livroId = Number(this.route.snapshot.paramMap.get('id'));
         console.log(this.livroId);
         this.showLivro(this.livroId);
@@ -38,7 +40,24 @@ export class LivroPage implements OnInit {
             });
     }
 
-    ionViewWillEnter() { }
+    editaLivro(id) {
+        console.log('clicou');
+        //this.router.navigate[('/editarLivro')];
+    }
+
+    ionViewWillEnter() {
+        this.userId = localStorage.getItem('userId');
+    }
+
+    //checa se o usuário e o vendedor são a mesma pessoa
+    userCheck() {
+        if (this.userId == this.livro.vendedor_id) {
+            this.sameUser = true;
+        } else {
+            this.sameUser = false;
+        }
+    }
+
     ngOnInit() {
 
     }

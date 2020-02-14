@@ -34,15 +34,21 @@ class LivroController extends Controller
         return response()->json($livro);
     }
 
-    public function listLivroTrue(){
+    public function listLivros(){
         $livro = Livro::all()->where('status',true);
-        return $livro;
+        return response()->json($livro);
+    }
+
+    public function listLivroTrue(){
+        $user = Auth::user();
+        $livro = Livro::all()->where('vendedor_id',$user->id);
         return response()->json($livro);
     }
 
     public function listLivroFalse(){
-        $livro = Livro::all()->where('status',false);
-        return $livro;
+
+        $user = Auth::user();
+        $livro = Livro::all()->where('comprador_id',$user->id);
         return response()->json($livro);
     }
 

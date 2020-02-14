@@ -26,7 +26,8 @@
             infos do livro
         </ion-col>
         <ion-col>
-            <ion-button class="botao" (click)="compraLivro(livroId)">Comprar</ion-button>
+            <ion-button *ngIf="sameUser; else editar" class="botao" (click)="compraLivro(livroId)">Comprar</ion-button>
+            <ng-template #editar><ion-button class="botao" (click)="editaLivro(livroId)">Editar</ion-button></ng-template>
         </ion-col>
     </ion-row>
 </ion-content>

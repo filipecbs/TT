@@ -24,8 +24,7 @@ Route::get('mostraUser/{id}', 'UserController@showUser');// mostrar um user espe
 
 
 //ROTAS PARA LIVROS
-Route::get('listaLivroTrue', 'LivroController@listLivroTrue');//listar livros com status true
-Route::get('listaLivroFalse', 'LivroController@listLivroFalse');//listar livros com status false
+Route::get('listaLivros', 'LivroController@listLivros');
 Route::get('mostraLivro/{id}', 'LivroController@showLivro');//rota para mostrar uma livro específico
 Route::get('mostraOferta/{id}', 'LivroController@mostraOferta');//rota para mostrar uma livro específico
 
@@ -57,8 +56,10 @@ Route::post('login', 'API\PassportController@login');          //deixei sozinha 
 Route::group(['middleware' => 'auth:api'], function() {
     Route::get('logout', 'API\PassportController@logout');
     Route::get('listHistorico', 'API\PassportController@listHistorico');
+    Route::get('listaLivroTrue', 'LivroController@listLivroTrue');//listar livros com status true
+    Route::get('listaLivroFalse', 'LivroController@listLivroFalse');//listar livros com status false
     Route::post('getDetails', 'API\PassportController@getDetails')->middleware('isAdmin');
-    Route::post('criaLivro', 'LivroController@createLivro');//criar um livro 
+    Route::post('criaLivro', 'LivroController@createLivro');//criar um livro
     Route::put('compraLivro/{livro_id}', 'API\PassportController@compraLivro');
     Route::put('atualizaLivro/{id}', 'LivroController@updateLivro');//atualizar um livro específico
     Route::delete('deletaUser/{id}', 'UserController@deleteUser')->middleware('isAdmin');//admin deleta um user específico

@@ -15,7 +15,7 @@ export class AuthService {
       'Accept': 'application/json'
     }
   }
-  
+
   registrarUser( form ): Observable<any> {
     return this.HttpClient.post( this.apiUrl + 'register', form, this.httpHeaders);
   }
@@ -39,6 +39,12 @@ export class AuthService {
 
   registrarComentario( form ): Observable<any> {
     return this.HttpClient.post( this.apiUrl + 'criaComentario', form, this.httpHeaders);
+  }
+
+  verHistorico() {
+      console.log(this.httpHeaders);
+      this.httpHeaders.headers["Authorization"] = 'Bearer ' + localStorage.getItem('userToken');
+      return this.HttpClient.get( this.apiUrl + 'listHistorico', this.httpHeaders );
   }
 
   constructor(public HttpClient: HttpClient) { }

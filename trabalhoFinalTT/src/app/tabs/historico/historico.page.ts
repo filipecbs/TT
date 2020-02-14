@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HistoricoPage implements OnInit {
 
-  livros: any[]
+  livros;
   Ativo: boolean = true;
   registerForm: FormGroup;
 
@@ -37,7 +37,7 @@ export class HistoricoPage implements OnInit {
   }
 
   registrarComentario( registerForm ) {
-  
+
     if ( registerForm.status == "VALID") {
 
       this.AuthService.registrarComentario( registerForm.value ).subscribe(
@@ -54,7 +54,7 @@ export class HistoricoPage implements OnInit {
     console.log(this.Ativo);
   }
   ListaLivro():any{
-		this.LivroService.listaLivro().subscribe(
+		this.LivroService.livrosCompra().subscribe(
       (res) => {
 			  this.livros = res;
 			  console.log(res)

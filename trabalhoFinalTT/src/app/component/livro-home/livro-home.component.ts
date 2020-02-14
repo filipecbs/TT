@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class LivroHomeComponent implements OnInit {
 
   livros: any[]
-  
-  constructor(public router: Router, public LivroService: LivroService) { 
+
+  constructor(public router: Router, public LivroService: LivroService) {
     this.ListaLivro();
   }
 
